@@ -59,4 +59,42 @@ fn main() {
     println!("x is {:?}", x);
     add_age(&mut x);
     println!("x is {:?}", x);
+
+    println!("----------");
+    println!("# コピーされる例");
+    // 数値は所有権の遷移は発生せず、値がコピーされる
+    let a = 100;
+    println!("a is {}", a);
+    let x = a;
+    println!("x is {}", x);
+
+    let y = a;
+    println!("y is {}", y);
+
+    println!("# タプルもコピーされる");
+    // タプルの場合
+    let a = (100, "masuda");
+    println!("a is {:?}", a);
+    let x = a;
+    println!("x is {:?}", x);
+    let y = a;
+    println!("y is {:?}", y);
+
+    println!("----------");
+    println!("# 有効範囲について");
+    let x: Person;
+    // let x: &Person;     // Person型の参照
+    // ↑ のような初期化をしない場合は、一回だけ値を設定することができる。
+    // しかし、スコープの外に出すには参照ではなく値を移動させてやらないといけない。
+    {
+        let a = Person {
+            name: String::from("Taro"),
+            age: 50,
+        };
+        // x = &a;     // ブロック内で定義した変数a の内容を外に持ち出すことはできない。
+        // このスコープを抜けた段階でメモリが解放される。
+        x = a;      // これは値が x に移動される。
+    };
+    // x = &a;
+    println!("x is {:?}", x);
 }
