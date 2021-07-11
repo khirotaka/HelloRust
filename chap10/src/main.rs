@@ -18,6 +18,14 @@ fn add_age(a: &mut Person) {
     a.age += 1;
 }
 
+fn new_person(name: &str, age: i32) -> Person {
+    let p = Person {
+        name: name.to_string(),
+        age,
+    };
+    p
+}
+
 fn main() {
     let a = Person{name: String::from("masuda"), age: 50};
     print_a(&a);
@@ -97,4 +105,23 @@ fn main() {
     };
     // x = &a;
     println!("x is {:?}", x);
+    println!("----------");
+    let a = new_person("taro", 10);
+    println!("a: {:?}", a);
+
+    println!("----------");
+    println!("# 可変変数のアクセス制限");
+    let mut a = Person{
+        name: String::from("Taro"),
+        age: 50,
+    };
+    println!("a is {:?}", a);
+    let mut x = &mut a;
+    x.age = 0;
+    println!("x is {:?}", x);
+
+    let mut y = &mut a;
+    y.name = String::from("Jiro");
+    println!("y is {:?}", y);
+    println!("a is {:?}", a);
 }
