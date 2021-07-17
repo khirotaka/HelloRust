@@ -1,0 +1,10 @@
+[package]
+name = "c_rust"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+name = "hello"
+crate-type = ["staticlib"]
+
+[dependencies]

@@ -1,0 +1,14 @@
+[package]
+name = "rust_c"
+version = "0.1.0"
+edition = "2018"
+
+links = "hello"     # リンク先ライブラリの指定
+build = "build.rs"  # ビルド方法の指定
+
+[dependencies]
+libc = "0.2.0"
+
+[build-dependencies]
+cc = "1.0"
+
