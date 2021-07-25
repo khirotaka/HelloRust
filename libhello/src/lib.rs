@@ -2,9 +2,9 @@ pub mod utils;
 pub mod activations;
 
 pub mod greet {
-        pub fn hello() {
-            println!("Hello!!");
-        }
+    pub fn hello() {
+        println!("Hello!!");
+    }
 }
 
 #[cfg(test)]
